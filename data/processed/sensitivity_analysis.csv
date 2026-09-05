@@ -1,0 +1,4 @@
+config_name,avg_dcss,prototype_breakdowns,breakdowns_avoided,reduction_pct,avg_recommended_interval,weight_fault_score,weight_route_severity_score,weight_load_score,weight_engine_hour_score,weight_mileage_score,weight_service_wear_score,risk_NORMAL,risk_HIGH,risk_CRITICAL,risk_LOW
+Default,43.88,462,160,25.72,26.99,0.3,0.2,0.2,0.15,0.1,0.05,12598,1996,3,3
+Fault-Heavy,37.72,557,65,10.45,29.22,0.45,0.2,0.15,0.1,0.05,0.05,13961,542,3,94
+Load-Heavy,47.97,359,263,42.28,23.19,0.25,0.2,0.3,0.15,0.05,0.05,10082,4514,3,1

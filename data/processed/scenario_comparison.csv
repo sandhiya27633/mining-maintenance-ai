@@ -1,0 +1,4 @@
+scenario,total_records,prototype_breakdowns,baseline_breakdowns,breakdowns_avoided,reduction_pct,prototype_prevented,baseline_prevented,avg_prototype_dcss,avg_baseline_interval,avg_prototype_interval
+NORMAL,13400,440,527,87,16.51,259,172,42.96,30.0,28.21
+DISRUPTION,1200,22,95,73,76.84,108,35,54.1,30.0,13.32
+ALL,14600,462,622,160,25.72,367,207,43.88,30.0,26.99

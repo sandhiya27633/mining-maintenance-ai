@@ -1,0 +1,151 @@
+{
+  "synthetic_data": true,
+  "model_version": "1.0",
+  "num_vehicles": 40,
+  "simulation_days": 365,
+  "total_vehicle_days": 14600,
+  "random_seed": 42,
+  "prototype_breakdowns": 462,
+  "baseline_breakdowns": 622,
+  "breakdowns_avoided": 160,
+  "reduction_pct": 25.7235,
+  "target_reduction_pct": 20.0,
+  "target_met": true,
+  "prototype_prevented": 367,
+  "baseline_prevented": 207,
+  "prototype_maintenance_freq": 0.037053,
+  "baseline_maintenance_freq": 0.033333,
+  "avg_prototype_interval_days": 26.99,
+  "avg_baseline_interval_days": 30.0,
+  "additional_interventions": 54,
+  "maintenance_efficiency": 2.963,
+  "scenario_results": [
+    {
+      "scenario": "NORMAL",
+      "total_records": 13400,
+      "prototype_breakdowns": 440,
+      "baseline_breakdowns": 527,
+      "breakdowns_avoided": 87,
+      "reduction_pct": 16.51,
+      "prototype_prevented": 259,
+      "baseline_prevented": 172,
+      "avg_prototype_dcss": 42.96,
+      "avg_baseline_interval": 30.0,
+      "avg_prototype_interval": 28.21
+    },
+    {
+      "scenario": "DISRUPTION",
+      "total_records": 1200,
+      "prototype_breakdowns": 22,
+      "baseline_breakdowns": 95,
+      "breakdowns_avoided": 73,
+      "reduction_pct": 76.84,
+      "prototype_prevented": 108,
+      "baseline_prevented": 35,
+      "avg_prototype_dcss": 54.1,
+      "avg_baseline_interval": 30.0,
+      "avg_prototype_interval": 13.32
+    },
+    {
+      "scenario": "ALL",
+      "total_records": 14600,
+      "prototype_breakdowns": 462,
+      "baseline_breakdowns": 622,
+      "breakdowns_avoided": 160,
+      "reduction_pct": 25.72,
+      "prototype_prevented": 367,
+      "baseline_prevented": 207,
+      "avg_prototype_dcss": 43.88,
+      "avg_baseline_interval": 30.0,
+      "avg_prototype_interval": 26.99
+    }
+  ],
+  "error_analysis": {
+    "true_positives": 238,
+    "false_positives": 1761,
+    "false_negatives": 2605,
+    "true_negatives": 9996,
+    "missed_breakdowns": 400,
+    "precision": 0.1191,
+    "recall": 0.0837,
+    "f1_score": 0.0983,
+    "avg_warning_lead_days": 6.65,
+    "warning_window_days": 7
+  },
+  "sensitivity_results": [
+    {
+      "config_name": "Default",
+      "weights": {
+        "fault_score": 0.3,
+        "route_severity_score": 0.2,
+        "load_score": 0.2,
+        "engine_hour_score": 0.15,
+        "mileage_score": 0.1,
+        "service_wear_score": 0.05
+      },
+      "avg_dcss": 43.88,
+      "prototype_breakdowns": 462,
+      "breakdowns_avoided": 160,
+      "reduction_pct": 25.72,
+      "risk_distribution": {
+        "NORMAL": 12598,
+        "HIGH": 1996,
+        "CRITICAL": 3,
+        "LOW": 3
+      },
+      "avg_recommended_interval": 26.99
+    },
+    {
+      "config_name": "Fault-Heavy",
+      "weights": {
+        "fault_score": 0.45,
+        "route_severity_score": 0.2,
+        "load_score": 0.15,
+        "engine_hour_score": 0.1,
+        "mileage_score": 0.05,
+        "service_wear_score": 0.05
+      },
+      "avg_dcss": 37.72,
+      "prototype_breakdowns": 557,
+      "breakdowns_avoided": 65,
+      "reduction_pct": 10.45,
+      "risk_distribution": {
+        "NORMAL": 13961,
+        "HIGH": 542,
+        "LOW": 94,
+        "CRITICAL": 3
+      },
+      "avg_recommended_interval": 29.22
+    },
+    {
+      "config_name": "Load-Heavy",
+      "weights": {
+        "fault_score": 0.25,
+        "route_severity_score": 0.2,
+        "load_score": 0.3,
+        "engine_hour_score": 0.15,
+        "mileage_score": 0.05,
+        "service_wear_score": 0.05
+      },
+      "avg_dcss": 47.97,
+      "prototype_breakdowns": 359,
+      "breakdowns_avoided": 263,
+      "reduction_pct": 42.28,
+      "risk_distribution": {
+        "NORMAL": 10082,
+        "HIGH": 4514,
+        "CRITICAL": 3,
+        "LOW": 1
+      },
+      "avg_recommended_interval": 23.19
+    }
+  ],
+  "notes": [
+    "IMPORTANT: All metrics are based on SYNTHETIC data. No real-world validity claims.",
+    "Simulation: 40 vehicles x 365 days = 14600 vehicle-days.",
+    "Random seed: 42 (fixed for reproducibility).",
+    "TARGET MET: 25.72% breakdown reduction (target: 20%).",
+    "Error analysis (window=7d): Precision=0.119, Recall=0.084, F1=0.098. Missed breakdowns=400, AvgLeadTime=6.7d.",
+    "Maintenance efficiency: prototype shortens intervals for HIGH/CRITICAL vehicles and extends them for LOW vehicles \u2014 net effect is condition-appropriate service timing."
+  ]
+}
