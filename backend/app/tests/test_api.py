@@ -88,12 +88,27 @@ class TestAuthRejection:
 
     @pytest.mark.parametrize("method,path", endpoints)
     def test_invalid_token_rejected(self, client, method, path):
-        """Requests with garbage token must be rejected."""
-        r = getattr(client, method.lower())(
-            path,
-            headers={"Authorization": "Bearer not-a-valid-jwt"},
+        """
+        Requests with a garbage token must be rejected (401/403).
+
+        The new auth.py validates tokens via Supabase's /auth/v1/user API.
+        In the test environment Supabase is not reachable, so we patch
+        _verify_token_with_supabase to simulate Supabase returning 401
+        for an invalid token. This tests the auth contract, not the network.
+        """
+        from fastapi import HTTPException as FastHTTPException
+
+        async def _reject(_token):
+            raise FastHTTPException(status_code=401, detail="Invalid token")
+
+        with patch("app.core.auth._verify_token_with_supabase", side_effect=_reject):
+            r = getattr(client, method.lower())(
+                path,
+                headers={"Authorization": "Bearer not-a-valid-jwt"},
+            )
+        assert r.status_code in (401, 403, 422), (
+            f"{method} {path} with garbage token returned {r.status_code}"
         )
-        assert r.status_code in (401, 403, 422)
 
 
 # ── Pydantic validation ────────────────────────────────────────────────────────
